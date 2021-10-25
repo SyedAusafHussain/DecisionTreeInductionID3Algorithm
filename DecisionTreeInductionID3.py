@@ -37,9 +37,9 @@ def spiliting(attributes, data, node, unique, spilitAttr, infoD):
     if (nData[attributes[-1]].nunique() == 1):
         spilitAttr.append('('+node+')' + unique + "->" + str(nData[attributes[-1]].unique()) + "class(Leaf node)")
     else:
-        nfoDAttr = calculateGain(attr, nData, infoD)
-        spilitAttr.append('('+node+')' + unique + '->' + max(nfoDAttr, key=nfoDAttr.get))
-        nNode = max(nfoDAttr, key=nfoDAttr.get)
+        infoDAttr = calculateGain(attr, nData, infoD)
+        spilitAttr.append('('+node+')' + unique + '->' + max(infoDAttr, key=infoDAttr.get))
+        nNode = max(infoDAttr, key=infoDAttr.get)
         for unique in nData[nNode].unique():
             spilitAttr = spiliting(attr, nData, nNode, unique, spilitAttr, infoD)
     return spilitAttr
